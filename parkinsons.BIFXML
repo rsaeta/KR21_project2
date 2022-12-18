@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<BIF VERSION="0.3">
+  <NETWORK>
+    <NAME>Parkinsons</NAME>
+    <VARIABLE TYPE="nature">
+      <NAME>Hereditary disease?</NAME>
+      <OUTCOME>0</OUTCOME>
+      <OUTCOME>1</OUTCOME>
+      <PROPERTY>weight = None</PROPERTY>
+    </VARIABLE>
+    <VARIABLE TYPE="nature">
+      <NAME>Age?</NAME>
+      <OUTCOME>0</OUTCOME>
+      <OUTCOME>1</OUTCOME>
+      <PROPERTY>weight = None</PROPERTY>
+    </VARIABLE>
+    <VARIABLE TYPE="nature">
+      <NAME>Stroke?</NAME>
+      <OUTCOME>0</OUTCOME>
+      <OUTCOME>1</OUTCOME>
+      <PROPERTY>weight = None</PROPERTY>
+    </VARIABLE>
+    <VARIABLE TYPE="nature">
+      <NAME>Tremor?</NAME>
+      <OUTCOME>0</OUTCOME>
+      <OUTCOME>1</OUTCOME>
+      <PROPERTY>weight = None</PROPERTY>
+    </VARIABLE>
+    <VARIABLE TYPE="nature">
+      <NAME>Side effects?</NAME>
+      <OUTCOME>0</OUTCOME>
+      <OUTCOME>1</OUTCOME>
+      <PROPERTY>weight = None</PROPERTY>
+    </VARIABLE>
+    <VARIABLE TYPE="nature">
+      <NAME>Parkinsons?</NAME>
+      <OUTCOME>0</OUTCOME>
+      <OUTCOME>1</OUTCOME>
+      <PROPERTY>weight = None</PROPERTY>
+    </VARIABLE>
+    <VARIABLE TYPE="nature">
+      <NAME>Hospital?</NAME>
+      <OUTCOME>0</OUTCOME>
+      <OUTCOME>1</OUTCOME>
+      <PROPERTY>weight = None</PROPERTY>
+    </VARIABLE>
+    <VARIABLE TYPE="nature">
+      <NAME>Neurologist?</NAME>
+      <OUTCOME>0</OUTCOME>
+      <OUTCOME>1</OUTCOME>
+      <PROPERTY>weight = None</PROPERTY>
+    </VARIABLE>
+    <VARIABLE TYPE="nature">
+      <NAME>Internal Medicine?</NAME>
+      <OUTCOME>0</OUTCOME>
+      <OUTCOME>1</OUTCOME>
+      <PROPERTY>weight = None</PROPERTY>
+    </VARIABLE>
+    <VARIABLE TYPE="nature">
+      <NAME>MRI?</NAME>
+      <OUTCOME>0</OUTCOME>
+      <OUTCOME>1</OUTCOME>
+      <PROPERTY>weight = None</PROPERTY>
+    </VARIABLE>
+    <VARIABLE TYPE="nature">
+      <NAME>Physical examination?</NAME>
+      <OUTCOME>0</OUTCOME>
+      <OUTCOME>1</OUTCOME>
+      <PROPERTY>weight = None</PROPERTY>
+    </VARIABLE>
+    <VARIABLE TYPE="nature">
+      <NAME>Treatment?</NAME>
+      <OUTCOME>0</OUTCOME>
+      <OUTCOME>1</OUTCOME>
+      <PROPERTY>weight = None</PROPERTY>
+    </VARIABLE>
+    <DEFINITION>
+      <FOR>Age?</FOR>
+      <TABLE>0.55 0.45</TABLE>
+    </DEFINITION>
+    <DEFINITION>
+      <FOR>Hereditary disease?</FOR>
+      <TABLE>0.8 0.2</TABLE>
+    </DEFINITION>
+    <DEFINITION>
+      <FOR>Stroke?</FOR>
+      <GIVEN>Age?</GIVEN>
+      <TABLE>0.95 0.05 0.75 0.25</TABLE>
+    </DEFINITION>
+    <DEFINITION>
+      <FOR>Tremor?</FOR>
+      <GIVEN>Hereditary disease?</GIVEN>
+      <GIVEN>Age?</GIVEN>
+      <TABLE>0.995 0.005 0.99 0.01 0.98 0.02 0.94 0.06</TABLE>
+    </DEFINITION>
+    <DEFINITION>
+      <FOR>Parkinsons?</FOR>
+      <GIVEN>Tremor?</GIVEN>
+      <GIVEN>Hereditary disease?</GIVEN>
+      <GIVEN>Age?</GIVEN>
+      <TABLE>0.98 0.02 0.82 0.18 0.92 0.08 0.75 0.25 0.88 0.12 0.55 0.45 0.7 0.3 0.4 0.6</TABLE>
+    </DEFINITION>
+    <DEFINITION>
+      <FOR>Side effects?</FOR>
+      <GIVEN>Age?</GIVEN>
+      <GIVEN>Tremor?</GIVEN>
+      <TABLE>0.5 0.5 0.8 0.2 0.9 0.1 0.7 0.3</TABLE>
+    </DEFINITION>
+    <DEFINITION>
+      <FOR>Hospital?</FOR>
+      <GIVEN>Side effects?</GIVEN>
+      <GIVEN>Tremor?</GIVEN>
+      <GIVEN>Stroke?</GIVEN>
+      <TABLE>0.9 0.1 0.7 0.3 0.5 0.5 0.2 0.8 0 1 0 1 0 1 0 1</TABLE>
+    </DEFINITION>
+    <DEFINITION>
+      <FOR>Neurologist?</FOR>
+      <GIVEN>Hospital?</GIVEN>
+      <TABLE>0.99 0.01 0.05 0.95</TABLE>
+    </DEFINITION>
+    <DEFINITION>
+      <FOR>Internal Medicine?</FOR>
+      <GIVEN>Hospital?</GIVEN>
+      <TABLE>1 0 0.9 0.1</TABLE>
+    </DEFINITION>
+    <DEFINITION>
+      <FOR>Physical examination?</FOR>
+      <GIVEN>Internal Medicine?</GIVEN>
+      <GIVEN>Neurologist?</GIVEN>
+      <TABLE>1 0 0.3 0.7 0.2 0.8 0.2 0.8</TABLE>
+    </DEFINITION>
+    <DEFINITION>
+      <FOR>MRI?</FOR>
+      <GIVEN>Neurologist?</GIVEN>
+      <TABLE>0.8 0.2 0.6 0.4</TABLE>
+    </DEFINITION>
+    <DEFINITION>
+      <FOR>Treatment?</FOR>
+      <GIVEN>MRI?</GIVEN>
+      <GIVEN>Physical examination?</GIVEN>
+      <TABLE>0.9 0.1 0.3 0.7 0.3 0.7 0.2 0.8</TABLE>
+    </DEFINITION>
+  </NETWORK>
+</BIF>
